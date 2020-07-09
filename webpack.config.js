@@ -11,7 +11,7 @@ module.exports = (env, { page: buildMode }) => {
     mode: buildMode || 'development',
     entry: src + '/index.ts',
     output: {
-      path: __dirname,
+      path: dist,
       filename: 'index.js',
     },
     module: {
