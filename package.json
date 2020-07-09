@@ -7,7 +7,8 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test0": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc",
     "publish": "git push origin master"
   },
@@ -92,7 +93,8 @@
     "globals": {
       "ts-jest": {
         "tsConfig": "tsconfig.json"
-      }
+      },
+      "window": {}
     },
     "testMatch": [
       "**/tests/**/*.test.ts"

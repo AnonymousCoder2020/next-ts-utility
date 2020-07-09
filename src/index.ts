@@ -1,5 +1,3 @@
-export const condProp = <B extends boolean, T extends object>(bool: B, obj: T) => (bool ? obj : {}) as B extends true ? T : {}
-
 type condPropsObject<T> = {
   [P in keyof T]: [boolean, T[P]]
 }
@@ -25,3 +23,5 @@ export const instanceAnd = <A>(value: unknown, instances: { new (): A }[]): valu
 export const instanceOr = <A>(value: unknown, instances: { new (): A }[]): value is A => {
   return instances.some(instance => value instanceof instance)
 }
+
+export * from './dom'
