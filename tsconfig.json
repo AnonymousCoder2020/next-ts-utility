@@ -5,11 +5,11 @@
     "strict": true,
     "skipLibCheck": true,
     "module": "esnext",
+    "rootDir": "./src",
     "outDir": "./dist/",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "sourceMap": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
     "newLine": "lf",
@@ -28,5 +28,6 @@
     ],
     "experimentalDecorators": true
   },
-  "includes": ["types/*", "src/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src"],
+  "exclude": ["tests"]
 }

@@ -1,4 +1,3 @@
-export const condProp = (bool, obj) => (bool ? obj : {});
 export const condProps = (obj) => {
     return Object.fromEntries(Object.entries(obj).filter(([_, [bool]]) => bool).map(([key, [_, val]]) => [key, val]));
 };
@@ -12,4 +11,4 @@ export const instanceAnd = (value, instances) => {
 export const instanceOr = (value, instances) => {
     return instances.some(instance => value instanceof instance);
 };
-//# sourceMappingURL=index.js.map
+export * from './dom';
