@@ -27,7 +27,7 @@ export const instanceOr = <A>(value: unknown, instances: { new (): A }[]): value
   return instances.some(instance => value instanceof instance)
 }
 
-export const mergePlainObject = <T extends object>(merge: DeepPartial<T>, base: T) => {
+export const mergePlainObject = <T extends object>(merge: DeepPartial<T>, base: T): T => {
   return mergeWith(merge, base, (obj: any) => {
     return isPlainObject(obj) ? undefined : obj
   })
