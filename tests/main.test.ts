@@ -1,8 +1,13 @@
-/*
-import { synthesizeDOMRect } from '~/.'
+import { mergePlainObject } from '../src'
 
-test('main', () => {
-  const { x, y, width, height } = synthesizeDOMRect(new DOMRect(10, 20, 100, 500), new DOMRect(30, 40, 30, 60))
-  console.log({ x, y, width, height })
+test('main test', () => {
+  const a = {
+    capture: {
+      element: null,
+      mode: false,
+    },
+  }
+  const b = { capture: { mode: true } }
+
+  console.log(mergePlainObject(b, a))
 })
-*/
