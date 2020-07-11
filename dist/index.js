@@ -1,3 +1,4 @@
+import { mergeWith, isPlainObject } from 'lodash';
 export const condProps = (obj) => {
     return Object.fromEntries(Object.entries(obj).filter(([_, [bool]]) => bool).map(([key, [_, val]]) => [key, val]));
 };
@@ -10,5 +11,10 @@ export const instanceAnd = (value, instances) => {
 };
 export const instanceOr = (value, instances) => {
     return instances.some(instance => value instanceof instance);
+};
+export const mergePlainObject = (merge, base) => {
+    return mergeWith(merge, base, (obj) => {
+        return isPlainObject(obj) ? undefined : obj;
+    });
 };
 export * from './dom';
