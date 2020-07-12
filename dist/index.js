@@ -17,4 +17,12 @@ export const mergePlainObject = (merge, base) => {
         return isPlainObject(obj) ? undefined : obj;
     });
 };
+export const findResult = (iterator, callback) => {
+    let i = 0;
+    for (const item of iterator) {
+        const res = callback(item, i);
+        if (res)
+            return res;
+    }
+};
 export * from './dom';

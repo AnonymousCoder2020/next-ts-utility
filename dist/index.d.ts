@@ -7,4 +7,5 @@ export declare const notUndefinedPropsAnd: <P extends string | number, T extends
 export declare const instanceAnd: <A>(value: unknown, instances: (new () => A)[]) => value is A;
 export declare const instanceOr: <A>(value: unknown, instances: (new () => A)[]) => value is A;
 export declare const mergePlainObject: <T extends object>(merge: DeepPartial<T>, base: T) => T;
+export declare const findResult: <T, D>(iterator: Iterable<T>, callback: (item: T, index: number) => D) => D | undefined;
 export * from './dom';
