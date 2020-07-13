@@ -1,4 +1,4 @@
-export const synthesizeDOMRect = (...rects) => {
+export default (...rects) => {
     const totalObj = rects.reduce((total, rect) => {
         const { x, y, width, height } = rect;
         total.x += x;

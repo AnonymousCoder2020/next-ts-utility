@@ -1,28 +1,8 @@
-import { mergeWith, isPlainObject } from 'lodash';
-export const condProps = (obj) => {
-    return Object.fromEntries(Object.entries(obj).filter(([_, [bool]]) => bool).map(([key, [_, val]]) => [key, val]));
-};
-export const notUndefinedPropsAnd = (obj, props) => {
-    return props.every(propName => obj[propName] !== undefined);
-};
-// 再考の余地あり
-export const instanceAnd = (value, instances) => {
-    return instances.every(instance => value instanceof instance);
-};
-export const instanceOr = (value, instances) => {
-    return instances.some(instance => value instanceof instance);
-};
-export const mergePlainObject = (merge, base) => {
-    return mergeWith(merge, base, (obj) => {
-        return isPlainObject(obj) ? undefined : obj;
-    });
-};
-export const findResult = (iterator, callback) => {
-    let i = 0;
-    for (const item of iterator) {
-        const res = callback(item, i);
-        if (res)
-            return res;
-    }
-};
-export * from './dom';
+export { default as synthesizeDOMRect } from './synthesizeDomRect';
+export { default as condProps } from './condProps';
+export { default as mergePlainObject } from './mergePlainObject';
+export { default as forEarchMulti } from './forEachMulti';
+export { default as findResult } from './findResult';
+export { default as notUndefinedPropsAnd } from './notUndefinedPropsAnd';
+export { default as instanceAnd } from './instanceAnd';
+export { default as instanceOr } from './instanceOr';
