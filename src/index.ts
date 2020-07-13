@@ -1,44 +1,8 @@
-import { DeepPartial } from 'ts-essentials'
-import { mergeWith, isPlainObject } from 'lodash'
-
-type condPropsObject<T> = {
-  [P in keyof T]: [boolean, T[P]]
-}
-
-export const condProps = <T>(obj: condPropsObject<T>) => {
-  return Object.fromEntries(
-    (Object.entries(obj) as [keyof T, [boolean, T[keyof T]]][]).filter(([_, [bool]]) => bool).map(([key, [_, val]]) => [key, val])
-  ) as { [P in keyof T]?: T[P] }
-}
-
-export const notUndefinedPropsAnd = <P extends number | string, T extends { [K in P]?: any }>(
-  obj: T,
-  props: P[]
-): obj is T & { [K in P]: Exclude<T[K], undefined> } => {
-  return props.every(propName => obj[propName] !== undefined)
-}
-
-// 再考の余地あり
-export const instanceAnd = <A>(value: unknown, instances: { new (): A }[]): value is A => {
-  return instances.every(instance => value instanceof instance)
-}
-
-export const instanceOr = <A>(value: unknown, instances: { new (): A }[]): value is A => {
-  return instances.some(instance => value instanceof instance)
-}
-
-export const mergePlainObject = <T extends object>(merge: DeepPartial<T>, base: T): T => {
-  return mergeWith(merge, base, (obj: any) => {
-    return isPlainObject(obj) ? undefined : obj
-  })
-}
-
-export const findResult = <T, D>(iterator: Iterable<T>, callback: (item: T, index: number) => D) => {
-  let i = 0
-  for (const item of iterator) {
-    const res = callback(item, i)
-    if (res) return res
-  }
-}
-
-export * from './dom'
+export { default as synthesizeDOMRect } from './synthesizeDomRect'
+export { default as condProps } from './condProps'
+export { default as mergePlainObject } from './mergePlainObject'
+export { default as forEarchMulti } from './forEachMulti'
+export { default as findResult } from './findResult'
+export { default as notUndefinedPropsAnd } from './notUndefinedPropsAnd'
+export { default as instanceAnd } from './instanceAnd'
+export { default as instanceOr } from './instanceOr'
