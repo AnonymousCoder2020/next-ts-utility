@@ -1,13 +1,10 @@
-import { mergePlainObject } from '../src'
+import { forEarchMulti } from '../src'
 
 test('main test', () => {
-  const a = {
-    capture: {
-      element: null,
-      mode: false,
-    },
-  }
-  const b = { capture: { mode: true } }
+  const c = [0, 1, 2]
+  const d = ['str', /regexp/]
 
-  console.log(mergePlainObject(b, a))
+  forEarchMulti([c, d] as const, ([cValue, dValue], i) => {
+    console.log(cValue, dValue, i)
+  })
 })
