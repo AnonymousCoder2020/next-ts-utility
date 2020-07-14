@@ -1,4 +1,4 @@
-export default (a: number, b: number, step: number = 1) => {
+export default (a: number, b: number, step: number = 1): number[] => {
   const surplus = (b - a) % step
   const betweenLength = Math.abs(Math.trunc((b - a) / step)) - (surplus ? 0 : 1)
   if (!betweenLength) return []

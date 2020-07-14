@@ -9,7 +9,7 @@
   "scripts": {
     "test0": "echo \"Error: no test specified\" && exit 1",
     "test": "jest",
-    "build": "tsc",
+    "build": "tsc && git add .",
     "publish": "git push origin master",
     "pull": "git pull origin master"
   },
@@ -19,7 +19,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/AnonymousCoder2020/next-ts-utility/issues"
   },
