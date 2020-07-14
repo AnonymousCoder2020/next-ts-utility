@@ -6,3 +6,4 @@ export { default as findResult } from './findResult';
 export { default as notUndefinedPropsAnd } from './notUndefinedPropsAnd';
 export { default as instanceAnd } from './instanceAnd';
 export { default as instanceOr } from './instanceOr';
+export { default as between } from './between';

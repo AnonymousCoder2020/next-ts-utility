@@ -1,4 +1,4 @@
-export const between = (a, b, step = 1) => {
+export default (a, b, step = 1) => {
     const surplus = (b - a) % step;
     const betweenLength = Math.abs(Math.trunc((b - a) / step)) - (surplus ? 0 : 1);
     if (!betweenLength)
