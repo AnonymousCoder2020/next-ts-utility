@@ -1,5 +1,6 @@
-declare type Items<T extends readonly any[][]> = {
+declare type ArrayList = readonly (readonly any[])[];
+declare type Items<T extends ArrayList> = {
     [P in keyof T]?: T[P][Extract<keyof T[P], number>];
 };
-declare const _default: <T extends readonly any[][]>(arrs: T, callback: (values: Items<T>, idx: number) => void | boolean) => void;
+declare const _default: <T extends ArrayList>(arrs: T, callback: (values: Items<T>, idx: number) => void | boolean) => void;
 export default _default;
