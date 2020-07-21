@@ -6,10 +6,11 @@
   "files": [
     "dist"
   ],
+  "type": "module",
   "scripts": {
-    "test0": "echo \"Error: no test specified\" && exit 1",
     "test": "jest",
-    "build": "tsc && git add .",
+    "map-methods": "node --loader ts-node/esm.mjs --harmony-top-level-await src/map-methods.ts",
+    "build": "npm run map-methods && tsc && git add .",
     "publish": "git push origin master",
     "pull": "git pull origin master"
   },
@@ -40,7 +41,6 @@
     "use-persisted-state": "^0.3.0"
   },
   "devDependencies": {
-    "@types/lodash.isplainobject": "^4.0.6",
     "@babel/core": "^7.10.2",
     "@types/babel__core": "^7.1.8",
     "@types/chrome": "0.0.91",
@@ -48,6 +48,7 @@
     "@types/jest": "^24.9.1",
     "@types/lodash": "^4.14.155",
     "@types/lodash-es": "^4.17.3",
+    "@types/lodash.isplainobject": "^4.0.6",
     "@types/node-sass": "^4.11.1",
     "@types/react": "^16.9.38",
     "@types/react-dom": "^16.9.8",
@@ -69,6 +70,7 @@
     "ts-essentials": "^5.0.0",
     "ts-jest": "^24.3.0",
     "ts-loader": "^6.2.2",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5",
     "webextension-polyfill": "^0.6.0",
     "webpack": "^4.43.0",
