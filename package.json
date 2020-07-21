@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "map-methods": "node --loader ts-node/esm.mjs --harmony-top-level-await src/map-methods.ts",
+    "map-methods": "node --loader ts-node/esm.mjs --harmony-top-level-await map-methods.ts",
     "build": "npm run map-methods && tsc && git add .",
     "publish": "git push origin master",
     "pull": "git pull origin master"
