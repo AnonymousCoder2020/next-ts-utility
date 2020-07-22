@@ -4,7 +4,7 @@ type Items<T extends ArrayList> = {
   [P in keyof T]?: T[P][Extract<keyof T[P], number>]
 }
 
-type Callback<T extends ArrayList> = (values: Items<T>, idx: number) => void | false | Promise<void | false>
+type Callback<T extends ArrayList> = (values: Items<T>, idx: number) => void | boolean | Promise<void | boolean>
 
 export default async <T extends ArrayList>(arrs: T, callback: Callback<T>) => {
   const maxLen = Math.max(...arrs.map(arr => arr.length))
