@@ -1,10 +1,8 @@
-import { forEarchMulti } from '../src'
+import { getOnCorrectness } from '../src'
 
 test('main test', () => {
-  const c = [0, 1, 2]
-  const d = [/regexp/, 'str', false]
-
-  forEarchMulti([c, d] as const, ([cValue, dValue], i) => {
-    console.log(cValue, dValue, i)
+  const n = getOnCorrectness(true, {
+    true: () => 1 as const,
+    false: () => 0 as const,
   })
 })
