@@ -12,7 +12,7 @@
     "test": "jest",
     "map-methods": "node --loader ts-node/esm.mjs map-methods.ts",
     "build": "npm run map-methods && tsc && git add .",
-    "publish": "git push origin master",
+    "push": "git push origin master",
     "pull": "git pull origin master"
   },
   "repository": {
