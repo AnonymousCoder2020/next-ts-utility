@@ -66,6 +66,7 @@ console.log(res?.[1]) // -> 'ffee'
 Extension of the ternary operator.
 
 ```js
+// Pure Typescript
 const res = {
   true() {
     // Complex processing...
@@ -98,6 +99,7 @@ const res = getOnCorrectness(condition, {
 #### condProps
 
 ```js
+// Pure Typescript
 let obj = {
   ...(conditionA && { a: 0 }),
   ...(conditionB && { b: 1 }),
@@ -129,4 +131,12 @@ between(1, 9, 2) // [3, 5, 7]
 
 between(8, 3) // [7, 6, 5, 4]
 between(3, 8, -1) // [7, 6, 5, 4]
+```
+
+### RegExp
+
+#### withFlag
+
+```js
+withFlag(/regepx/g, 'igu') // -> /regexp/gui
 ```

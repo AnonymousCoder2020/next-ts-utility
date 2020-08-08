@@ -21,29 +21,6 @@ module.exports = (env, { page: buildMode }) => {
           exclude: '/node_modules/',
           use: ['babel-loader', 'ts-loader'],
         },
-        {
-          test: /\.scss/,
-          exclude: '/node_modules/',
-          use: [
-            'style-loader',
-            {
-              loader: 'css-loader',
-              options: { sourceMap: true },
-            },
-            {
-              loader: 'sass-loader',
-              options: { sourceMap: true },
-            },
-          ],
-        },
-        {
-          test: /\.css/,
-          use: ['style-loader', 'css-loader'],
-        },
-        {
-          test: /\.svg/,
-          loader: 'react-svg-loader',
-        },
       ],
     },
     resolve: {
