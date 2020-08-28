@@ -1,5 +1,4 @@
 export { default as between } from './between'
-export { default as branch } from './branch'
 export { default as condProps } from './condProps'
 export { default as eachAsync } from './eachAsync'
 export { default as eachMulti } from './eachMulti'

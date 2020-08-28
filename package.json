@@ -10,8 +10,8 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "map-methods": "node --loader ts-node/esm.mjs map-methods.ts",
-    "build": "npm run map-methods && tsc && git add .",
+    "script": "node --loader ts-node/esm.mjs scripts/index.ts",
+    "build": "npm run script create-util-folders && npm run script map-methods && tsc && git add .",
     "push": "git push origin master",
     "pull": "git pull origin master"
   },
@@ -49,6 +49,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "babel-plugin-transform-imports": "^2.0.0",
     "css-loader": "^3.6.0",
+    "glob": "^7.1.6",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
     "jest-svg-transformer": "^1.0.0",
@@ -59,7 +60,7 @@
     "ts-jest": "^24.3.0",
     "ts-loader": "^6.2.2",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5",
+    "typescript": "^3.9.7",
     "webextension-polyfill": "^0.6.0",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
@@ -88,7 +89,8 @@
       "window": {}
     },
     "testMatch": [
-      "**/tests/**/*.test.ts"
+      "**/tests/**/*.test.ts",
+      "<rootDir>/src/**/*.test.ts"
     ]
   }
 }
