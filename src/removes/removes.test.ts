@@ -1,5 +1,5 @@
 import util from './'
 
 describe('removes', () => {
-  const a = util(['google', 'niconico', 0], 'google')
+  const a = util(['google', 'niconico', 0], '')
 })
