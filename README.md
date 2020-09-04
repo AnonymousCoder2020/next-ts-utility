@@ -61,6 +61,30 @@ console.log(res?.[1]) // -> 'ffee'
 
 ### Lang
 
+#### branch
+
+```js
+const result = branch([
+  [false, () => (console.log('A'), 'A is true')],
+  [
+    true,
+    () => {
+      console.log('B')
+      return 'B is true.'
+    },
+  ],
+  [
+    false,
+    function () {
+      console.log('C')
+      return 'C is true.'
+    },
+  ],
+]) // -> B
+
+console.log(result) // -> 'B is true.'
+```
+
 #### getOnCorrectness
 
 Extension of the ternary operator.
