@@ -1,6 +1,8 @@
-import { mergeWith, isPlainObject } from 'lodash';
-export default (merge, base) => {
-    return mergeWith(merge, base, (obj) => {
-        return isPlainObject(obj) ? undefined : obj;
-    });
+import { isPlainObject, mergeWith } from 'lodash';
+export default (base, ...merge) => {
+    return merge.reduce((b, m) => {
+        return mergeWith(m, b, (obj) => {
+            return isPlainObject(obj) ? void 0 : obj;
+        });
+    }, base);
 };

@@ -1,8 +1,10 @@
+import { isPlainObject, mergeWith } from 'lodash'
 import { DeepPartial } from 'ts-essentials'
-import { mergeWith, isPlainObject } from 'lodash'
 
-export default <T extends object>(merge: DeepPartial<T>, base: T): T => {
-  return mergeWith(merge, base, (obj: any) => {
-    return isPlainObject(obj) ? undefined : obj
-  })
+export default <T extends object>(base: T, ...merge: DeepPartial<T>[]): T => {
+  return merge.reduce((b, m) => {
+    return mergeWith(m, b, (obj: unknown) => {
+      return isPlainObject(obj) ? void 0 : obj
+    })
+  }, base)
 }
