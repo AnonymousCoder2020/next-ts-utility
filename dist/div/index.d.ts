@@ -1,2 +1,2 @@
-declare const _default: <T>(a: T[], n: number) => T[][];
+declare const _default: (x: number, n: number) => number[];
 export default _default;

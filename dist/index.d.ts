@@ -3,6 +3,7 @@ export { default as branch } from './branch';
 export { default as branchCase } from './branchCase';
 export { default as condProps } from './condProps';
 export { default as div } from './div';
+export { default as divArray } from './divArray';
 export { default as eachAsync } from './eachAsync';
 export { default as eachMulti } from './eachMulti';
 export { default as eachMultiAsync } from './eachMultiAsync';
