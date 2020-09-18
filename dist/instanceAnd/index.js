@@ -1,3 +1,3 @@
-export default (value, instances) => {
-    return instances.every(instance => value instanceof instance);
+export default (value, classes) => {
+    return classes.every(cls => value instanceof cls);
 };

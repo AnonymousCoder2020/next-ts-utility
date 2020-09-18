@@ -1,3 +1,3 @@
-export default (value, instances) => {
-    return instances.some(instance => value instanceof instance);
+export default (value, classes) => {
+    return classes.some(cls => value instanceof cls);
 };
