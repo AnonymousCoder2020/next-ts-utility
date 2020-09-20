@@ -59,30 +59,37 @@ let res = findResult(regs, reg => text.match(reg))
 console.log(res?.[1]) // -> 'ffee'
 ```
 
-### Lang
-
-#### branch
+#### divArray
 
 ```js
-const result = branch([
-  [false, () => (console.log('A'), 'A is true')],
-  [
-    true,
-    () => {
-      console.log('B')
-      return 'B is true.'
-    },
-  ],
-  [
-    false,
-    function () {
-      console.log('C')
-      return 'C is true.'
-    },
-  ],
-]) // -> B
+divArray([0, 1, '2', 3, 4, 5, /6/, 7], 3)
+/* ->
+[
+  [0, 1, '2'],
+  [3, 4, 5],
+  [/6/, 7]
+]
+*/
+```
 
-console.log(result) // -> 'B is true.'
+### Lang
+
+#### instanceOr
+
+```js
+// Pure Typescript
+if (node instanceof HTMLInputElement || node instanceof HTMLTextAreaElement || node instanceof HTMLSelectElement) {
+  node.value // No error occurs.
+}
+```
+
+↓
+
+```js
+if (instanceOr(node, [HTMLInputElement, HTMLTextAreaElement, HTMLSelectElement])) {
+  node.value // No error occurs.
+  // node: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+}
 ```
 
 #### getOnCorrectness
@@ -155,6 +162,12 @@ between(1, 9, 2) // [3, 5, 7]
 
 between(8, 3) // [7, 6, 5, 4]
 between(3, 8, -1) // [7, 6, 5, 4]
+```
+
+#### div
+
+```js
+div([0, 1, /2/, 3, 4, '5', 6], 3) // -> [3, 3, 1]
 ```
 
 ### RegExp
