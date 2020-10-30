@@ -13,6 +13,7 @@ export { default as getOnCorrectness } from './getOnCorrectness';
 export { default as instanceAnd } from './instanceAnd';
 export { default as instanceOr } from './instanceOr';
 export { default as mergePlainObject } from './mergePlainObject';
+export { default as move } from './move';
 export { default as notUndefinedPropsAnd } from './notUndefinedPropsAnd';
 export { default as synthesizeDomRect } from './synthesizeDomRect';
 export { default as withFlag } from './withFlag';
