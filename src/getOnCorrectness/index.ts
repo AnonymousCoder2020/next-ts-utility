@@ -1,8 +1,8 @@
-interface Branch {
-  true: () => any
-  false: () => any
+interface Branch<T, F, C> {
+  true: (cond: C) => T
+  false: (cond: C) => F
 }
 
-export default <B extends boolean, T extends Branch>(bool: B, branch: T): B extends true ? ReturnType<T['true']> : ReturnType<T['false']> => {
-  return branch[bool.toString() as 'true' | 'false']()
+export default <T, F, C>(cond: C, branch: Branch<T, F, C>) => {
+  return branch[(!!cond).toString() as 'true' | 'false'](cond) as C extends undefined | null | void | false ? F : T
 }

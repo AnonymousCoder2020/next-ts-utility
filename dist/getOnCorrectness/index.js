@@ -1,3 +1,3 @@
-export default (bool, branch) => {
-    return branch[bool.toString()]();
+export default (cond, branch) => {
+    return branch[(!!cond).toString()](cond);
 };

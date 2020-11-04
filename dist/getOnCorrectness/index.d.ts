@@ -1,6 +1,6 @@
-interface Branch {
-    true: () => any;
-    false: () => any;
+interface Branch<T, F, C> {
+    true: (cond: C) => T;
+    false: (cond: C) => F;
 }
-declare const _default: <B extends boolean, T extends Branch>(bool: B, branch: T) => B extends true ? ReturnType<T["true"]> : ReturnType<T["false"]>;
+declare const _default: <T, F, C>(cond: C, branch: Branch<T, F, C>) => C extends false | void | null | undefined ? F : T;
 export default _default;
