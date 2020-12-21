@@ -1,4 +1,4 @@
-import { isPlainObject, mergeWith } from 'lodash'
+import { isPlainObject, mergeWith } from 'lodash-es'
 import { DeepPartial } from 'ts-essentials'
 
 export default <T extends object>(base: T, ...merge: DeepPartial<T>[]): T => {
