@@ -14,6 +14,29 @@ import { condProps, ... } from 'next-ts-utility'
 
 ### Array
 
+#### move
+
+```js
+let a = [0, 1, 2, 3, 4]
+
+move(a, 1, 3)
+
+console.log(a) // -> [0, 2, 3, 1, 4]
+```
+
+#### separate
+
+```js
+let arr = [0, 1, 2, 'str0', 'str1']
+
+const [strArr, numArr] = separate(arr, (item): item is string => typeof item === 'string')
+
+// strArr: string[]
+// numArr: number[]
+
+console.log(strArr, numArr) // -> ['str0', 'str1'] [0, 1, 2]
+```
+
 #### eachAsync
 
 ```js
