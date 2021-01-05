@@ -3,10 +3,10 @@ const getFileName = (fileName: string) => fileName.match(/(.*?)\..*/)?.[1] ?? fi
 const getExtension = (fileName: string) => fileName.match(/(?<=\.)[^.]+$/)?.[0]
 
 ;(async () => {
-  const removeFileNames = ['index']
+  const ignoreFileNames = ['index']
   const utils = (await fs.readdir('./src'))
     .map(file => getFileName(file))
-    .filter(fileName => fileName.length && removeFileNames.every(removeFileName => removeFileName !== fileName))
+    .filter(fileName => fileName.length && ignoreFileNames.every(removeFileName => removeFileName !== fileName))
   const indexTsValue = utils.map(fileName => `export { default as ${fileName} } from './${fileName}'`).join('\n')
 
   try {

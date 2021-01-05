@@ -4,7 +4,7 @@
       "transform-imports",
       {
         "lodash": {
-          "transform": "lodash/${member}"
+          "transform": "lodash-es/${member}"
         }
       }
     ]
