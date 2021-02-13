@@ -1,4 +1,14 @@
-import { branch, condProps, getOnCorrectness, instanceAnd, mergePlainObject, move, separate } from './'
+import { JSDOM } from 'jsdom'
+import { branch, condProps, getOnCorrectness, goErr, instanceAnd, mergePlainObject, move, separate } from './'
+
+describe('goErr', () => {
+  const a = () => 'a'
+  const b = async () => 'b'
+  it('async関数を見分けられるか', async () => {
+    expect(goErr(a)).toStrictEqual(['a', undefined])
+    expect(await goErr(b)).toStrictEqual(['b', undefined])
+  })
+})
 
 describe('getOnCorrectness', () => {
   const res = getOnCorrectness(false, {
@@ -12,10 +22,11 @@ describe('getOnCorrectness', () => {
 })
 
 describe('instanceAnd', () => {
+  const win = new JSDOM().window
   const a: any = 10
-  if (instanceAnd(a, [HTMLDivElement, HTMLFontElement])) {
+  if (instanceAnd(a, [win.HTMLDivElement, win.HTMLFontElement])) {
     a
-  } else if (a instanceof HTMLInputElement || a instanceof HTMLMarqueeElement) {
+  } else if (a instanceof win.HTMLInputElement || a instanceof win.HTMLMarqueeElement) {
     a
   }
 })

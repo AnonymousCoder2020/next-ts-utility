@@ -10,6 +10,7 @@ export { default as eachMultiAsync } from './eachMultiAsync';
 export { default as eachTable } from './eachTable';
 export { default as findResult } from './findResult';
 export { default as getOnCorrectness } from './getOnCorrectness';
+export { default as goErr } from './goErr';
 export { default as instanceAnd } from './instanceAnd';
 export { default as instanceOr } from './instanceOr';
 export { default as mergePlainObject } from './mergePlainObject';

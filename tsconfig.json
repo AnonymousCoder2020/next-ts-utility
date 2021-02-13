@@ -7,6 +7,7 @@
     "module": "esnext",
     "rootDir": "./src",
     "outDir": "./dist/",
+    "esModuleInterop": true,
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "declaration": true,
@@ -14,7 +15,7 @@
     "strictNullChecks": true,
     "newLine": "lf",
     "jsx": "react",
-    "lib": ["es2020.string", "esnext", "dom", "dom.iterable"],
+    "lib": ["es2020.string", "es2020", "dom", "dom.iterable"],
     "paths": {
       "~/*": ["src/*"],
       "~comp/*": ["src/components/*"],

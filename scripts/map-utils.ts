@@ -4,7 +4,7 @@ const getExtension = (fileName: string) => fileName.match(/(?<=\.)[^.]+$/)?.[0]
 
 ;(async () => {
   const ignoreFileNames = ['index']
-  const utils = (await fs.readdir('./src'))
+  const utils = ((await fs.readdir('./src')) as string[])
     .map(file => getFileName(file))
     .filter(fileName => fileName.length && ignoreFileNames.every(removeFileName => removeFileName !== fileName))
   const indexTsValue = utils.map(fileName => `export { default as ${fileName} } from './${fileName}'`).join('\n')
