@@ -2,11 +2,11 @@ import { JSDOM } from 'jsdom'
 import { branch, condProps, getOnCorrectness, goErr, instanceAnd, mergePlainObject, move, separate } from './'
 
 describe('goErr', () => {
-  const a = () => 'a'
-  const b = async () => 'b'
+  const a = goErr(() => 'a')
+  const b = goErr(async () => 'b')
   it('async関数を見分けられるか', async () => {
-    expect(goErr(a)).toStrictEqual(['a', undefined])
-    expect(await goErr(b)).toStrictEqual(['b', undefined])
+    expect(a).toStrictEqual(['a', undefined])
+    expect(await b).toStrictEqual(['b', undefined])
   })
 })
 
