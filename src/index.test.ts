@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom'
-import { branch, condProps, getOnCorrectness, goErr, instanceAnd, mergePlainObject, move, separate } from './'
+import { branch, condProps, getOnCorrectness, goErr, indexRange, instanceAnd, lastIndexRange, mergePlainObject, move, separate } from './'
 
 describe('goErr', () => {
   const a = goErr(() => 'a')
@@ -7,6 +7,23 @@ describe('goErr', () => {
   it('async関数を見分けられるか', async () => {
     expect(a).toStrictEqual(['a', undefined])
     expect(await b).toStrictEqual(['b', undefined])
+  })
+})
+
+describe('indexRange', () => {
+  test('文字列', () => {
+    expect(indexRange('adieus', 'die')).toEqual([1, 4])
+    expect(indexRange('_-_-', 'a')).toEqual(void 0)
+  })
+  test('正規表現', () => {
+    expect(indexRange('minecraft', /.{2}cra/)).toEqual([2, 7])
+    expect(indexRange('minecraft', /\d{2}/)).toEqual(void 0)
+  })
+})
+
+describe('lastIndexRange', () => {
+  test('正規表現', () => {
+    expect(lastIndexRange('GitHub', /[A-Z][a-z]+/)).toEqual([3, 6])
   })
 })
 

@@ -28,8 +28,7 @@
   "homepage": "https://github.com/AnonymousCoder2020/next-ts-utility#readme",
   "dependencies": {
     "dayjs": "^1.10.1",
-    "lodash-es": "^4.17.20",
-    "my-useful-type": "git+https://github.com/AnonymousCoder2020/my-useful-type.git",
+    "lodash-es": "^4.17.21",
     "randexp": "^0.5.3"
   },
   "devDependencies": {
@@ -59,6 +58,7 @@
     "jest-environment-node": "^26.6.2",
     "jest-svg-transformer": "^1.0.0",
     "jsdom": "^16.4.0",
+    "my-useful-type": "github:AnonymousCoder2020/my-useful-type",
     "node-forge": ">=0.10.0",
     "ts-essentials": "^7.0.1",
     "ts-jest": "^27.0.0-next.6",

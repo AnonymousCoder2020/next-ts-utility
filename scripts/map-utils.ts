@@ -20,10 +20,10 @@ const getExtension = (fileName: string) => fileName.match(/(?<=\.)[^.]+$/)?.[0]
   ;(await fs.readdir('./dist')).forEach((file: string) => {
     const fileName = getFileName(file)
     const extension = getExtension(file)
-    const isRemove = utils.every(methodName => methodName !== fileName) || (fileName !== 'index' && extension && ['ts', 'js'].includes(extension))
+    const isRemove = utils.every(methodName => methodName !== fileName) || (fileName !== 'index' && extension && !['ts', 'js'].includes(extension))
     if (!isRemove) return
     // ここで削除が決定
-    const removePath = `./dist/${fileName}`
+    const removePath = `./dist/${file}`
     fs.remove(removePath)
   })
 })()

@@ -1,10 +1,10 @@
-export default (a: number, b: number, step: number = 1): number[] => {
-  const surplus = (b - a) % step
-  const betweenLength = Math.abs(Math.trunc((b - a) / step)) - (surplus ? 0 : 1)
+export default (start: number, end: number, step: number = 1): number[] => {
+  const surplus = (end - start) % step
+  const betweenLength = Math.abs(Math.trunc((end - start) / step)) - (surplus ? 0 : 1)
   if (!betweenLength) return []
-  step = b < a ? -step : step
-  const start = (0 < step ? Math.min(a, b) : Math.max(a, b)) + step
+  step = end < start ? -step : step
+  const _start = (0 < step ? Math.min(start, end) : Math.max(start, end)) + step
   return Array(betweenLength)
     .fill(0)
-    .reduce((acc, _, i) => acc.concat([start + i * step]), [])
+    .reduce((acc, _, i) => acc.concat([_start + i * step]), [])
 }

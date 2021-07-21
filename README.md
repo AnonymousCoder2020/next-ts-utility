@@ -173,11 +173,25 @@ let obj = {
 }
 ```
 
+### String
+
+#### indexRange
+
+```js
+indexRange('adieus', 'die') // [1, 4]
+
+indexRange('GitHub', /[A-Z][a-z]+/) // [0, 3]
+```
+
+#### lastIndexRange
+
+```js
+lastIndexRange('GitHub', /[A-Z][a-z]+/) // [3, 6]
+```
+
 ### Number
 
 #### between
-
-`between(start: number, end: number, step: number)`
 
 ```js
 between(1, 5) // [2, 3, 4]
