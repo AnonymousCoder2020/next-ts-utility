@@ -4,6 +4,7 @@ export default (callback) => {
         res = callback();
     }
     catch (error) {
+        console.warn(error);
         err = error;
     }
     return (res && res instanceof Promise

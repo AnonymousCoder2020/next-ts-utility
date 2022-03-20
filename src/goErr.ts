@@ -14,11 +14,14 @@ export default <F extends AnyFunction>(callback: F) => {
   try {
     res = callback()
   } catch (error) {
+    console.warn(error)
     err = error
   }
-  return (res && res instanceof Promise
-    ? new Promise(resolve =>
-        (res as Promise<ReturnTypeWithoutPromise<F>>).then(finallyRes => resolve([finallyRes, err])).catch(error => resolve([undefined, error]))
-      )
-    : ([res, err] as [ReturnType<F>, any])) as GoErrorReturnType<F>
+  return (
+    res && res instanceof Promise
+      ? new Promise(resolve =>
+          (res as Promise<ReturnTypeWithoutPromise<F>>).then(finallyRes => resolve([finallyRes, err])).catch(error => resolve([undefined, error]))
+        )
+      : ([res, err] as [ReturnType<F>, any])
+  ) as GoErrorReturnType<F>
 }
