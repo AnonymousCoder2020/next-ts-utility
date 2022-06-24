@@ -57,7 +57,7 @@
     "jest": "^27.0.0-next.2",
     "jest-environment-node": "^26.6.2",
     "jest-svg-transformer": "^1.0.0",
-    "jsdom": "^16.4.0",
+    "jsdom": "^16.5.0",
     "my-useful-type": "github:AnonymousCoder2020/my-useful-type",
     "node-forge": ">=0.10.0",
     "ts-essentials": "^7.0.1",
