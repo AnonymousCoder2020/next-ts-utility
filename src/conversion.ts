@@ -8,4 +8,5 @@ export default (sec: number, by: number[]) => {
     res[res.length - 1] = remainder
     res.push(carry)
   }
+  return res
 }

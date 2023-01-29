@@ -9,4 +9,5 @@ export default (sec, by) => {
         res[res.length - 1] = remainder;
         res.push(carry);
     }
+    return res;
 };

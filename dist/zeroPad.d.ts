@@ -1,1 +1,2 @@
-export declare const zeroPad: (int: number, padNum: number) => string;
+declare const _default: (int: number, padNum: number) => string;
+export default _default;
