@@ -14,7 +14,7 @@ import { condProps, ... } from 'next-ts-utility'
 
 ### Array
 
-#### move
+move
 
 ```js
 let a = [0, 1, 2, 3, 4]
@@ -24,7 +24,7 @@ move(a, 1, 3)
 console.log(a) // -> [0, 2, 3, 1, 4]
 ```
 
-#### separate
+separate
 
 ```js
 let arr = [0, 1, 2, 'str0', 'str1']
@@ -37,7 +37,7 @@ const [strArr, numArr] = separate(arr, (item): item is string => typeof item ===
 console.log(strArr, numArr) // -> ['str0', 'str1'] [0, 1, 2]
 ```
 
-#### eachAsync
+eachAsync
 
 ```js
 ;(async () => {
@@ -49,7 +49,7 @@ console.log(strArr, numArr) // -> ['str0', 'str1'] [0, 1, 2]
 })()
 ```
 
-#### eachMulti
+eachMulti
 
 ```js
 let a = [10, 11, 12, 13]
@@ -70,7 +70,7 @@ eachMulti([a, b] as const, ([valueA, valueB], i) => {
 //   13 undefined 3
 ```
 
-#### findResult
+findResult
 
 ```js
 let regs = [/aa(.+)/, /cc(.+)/, /(.+)ee/]
@@ -82,10 +82,10 @@ let res = findResult(regs, reg => text.match(reg))
 console.log(res?.[1]) // -> 'ffee'
 ```
 
-#### divArray
+divArr
 
 ```js
-divArray([0, 1, '2', 3, 4, 5, /6/, 7], 3)
+divArr([0, 1, '2', 3, 4, 5, /6/, 7], 3)
 /* ->
 [
   [0, 1, '2'],
@@ -97,27 +97,21 @@ divArray([0, 1, '2', 3, 4, 5, /6/, 7], 3)
 
 ### Lang
 
-#### instanceOr
+instanceOr
 
 ```js
 // Pure Typescript
 if (node instanceof HTMLInputElement || node instanceof HTMLTextAreaElement || node instanceof HTMLSelectElement) {
   node.value // No error occurs.
 }
-```
-
-↓
-
-```js
+// ↓ ↓ ↓
 if (instanceOr(node, [HTMLInputElement, HTMLTextAreaElement, HTMLSelectElement])) {
   node.value // No error occurs.
   // node: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 }
 ```
 
-#### getOnCorrectness
-
-Extension of the ternary operator.
+ternaryExt
 
 ```js
 // Pure Typescript
@@ -131,12 +125,8 @@ const res = {
     return 0
   }
 }[condition.toString() as 'true' | 'false']()
-```
-
-↓
-
-```js
-const res = getOnCorrectness(condition, {
+// ↓ ↓ ↓
+const res = ternaryExt(condition, {
   true() {
     // ...
     return 1
@@ -144,54 +134,50 @@ const res = getOnCorrectness(condition, {
   false() {
     // ...
     return 0
-  },
+  }
 })
 ```
 
 ### Object
 
-#### condProps
+condProps
 
 ```js
 // Pure Typescript
 let obj = {
   ...(conditionA && { a: 0 }),
   ...(conditionB && { b: 1 }),
-  c: 2,
+  c: 2
 }
-```
-
-↓
-
-```js
+// ↓ ↓ ↓
 let obj = {
   ...condProps({
     a: [conditionA, 0],
-    b: [conditionB, 1],
+    b: [conditionB, 1]
   }),
-  c: 2,
+  c: 2
 }
 ```
 
 ### String
 
-#### indexRange
+idxRange
 
 ```js
-indexRange('adieus', 'die') // [1, 4]
+idxRange('adieus', 'die') // [1, 4]
 
-indexRange('GitHub', /[A-Z][a-z]+/) // [0, 3]
+idxRange('GitHub', /[A-Z][a-z]+/) // [0, 3]
 ```
 
-#### lastIndexRange
+lastIdxRange
 
 ```js
-lastIndexRange('GitHub', /[A-Z][a-z]+/) // [3, 6]
+lastIdxRange('GitHub', /[A-Z][a-z]+/) // [3, 6]
 ```
 
 ### Number
 
-#### between
+between
 
 ```js
 between(1, 5) // [2, 3, 4]
@@ -201,15 +187,15 @@ between(8, 3) // [7, 6, 5, 4]
 between(3, 8, -1) // [7, 6, 5, 4]
 ```
 
-#### div
+divCount
 
 ```js
-div([0, 1, /2/, 3, 4, '5', 6], 3) // -> [3, 3, 1]
+divCount([0, 1, /2/, 3, 4, '5', 6], 3) // -> [3, 3, 1]
 ```
 
 ### RegExp
 
-#### withFlag
+withFlag
 
 ```js
 withFlag(/regepx/g, 'igu') // -> /regexp/gui

@@ -7,6 +7,7 @@ const getExtension = (fileName: string) => fileName.match(/(?<=\.)[^.]+$/)?.[0]
   const utils = ((await fs.readdir('./src')) as string[])
     .map(file => getFileName(file))
     .filter(fileName => fileName.length && ignoreFileNames.every(removeFileName => removeFileName !== fileName))
+  console.log(utils)
   const indexTsValue = utils.map(fileName => `export { default as ${fileName} } from './${fileName}'`).join('\n')
 
   try {
@@ -20,7 +21,8 @@ const getExtension = (fileName: string) => fileName.match(/(?<=\.)[^.]+$/)?.[0]
   ;(await fs.readdir('./dist')).forEach((file: string) => {
     const fileName = getFileName(file)
     const extension = getExtension(file)
-    const isRemove = utils.every(methodName => methodName !== fileName) || (fileName !== 'index' && extension && !['ts', 'js'].includes(extension))
+    const isRemove =
+      utils.every(methodName => methodName !== fileName) || (fileName !== 'index' && extension && !['ts', 'js'].includes(extension))
     if (!isRemove) return
     // ここで削除が決定
     const removePath = `./dist/${file}`

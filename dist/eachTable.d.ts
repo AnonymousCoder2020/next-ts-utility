@@ -1,6 +1,6 @@
-declare type ArrayList = readonly (readonly any[])[];
-declare type Item<L extends ArrayList> = L[number][number];
-declare type Callback<L extends ArrayList> = (i: Item<L>, index: {
+type ArrayList = readonly (readonly any[])[];
+type Item<L extends ArrayList> = L[number][number];
+type Callback<L extends ArrayList> = (i: Item<L>, index: {
     row: number;
     column: number;
 }) => void | boolean;

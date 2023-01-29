@@ -1,7 +1,7 @@
-declare type ToInstances<L extends CommonClass[]> = {
+type ToInstances<L extends CommonClass[]> = {
     [P in Extract<keyof L, number>]: L[P]['prototype'];
 }[Extract<keyof L, number>];
-declare type CommonClass = {
+type CommonClass = {
     new (): object;
     prototype: object;
 };
