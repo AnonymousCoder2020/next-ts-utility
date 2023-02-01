@@ -1,7 +1,7 @@
 # next-ts-utility
 
 ```
-npm i https://github.com/AnonymousCoder2020/next-ts-utility
+yarn add https://github.com/AnonymousCoder2020/next-ts-utility
 ```
 
 ## Usage
@@ -196,7 +196,7 @@ conversion
 
 ```js
 conversion(400000, [60, 60, 24, 365]) // -> [ 40, 6, 15, 4 ]
-// 400,000sec = 4days 15hour 6min 40sec
+// 400,000sec == 4days 15hour 6min 40sec
 ```
 
 between
