@@ -8,6 +8,8 @@ export default (callback) => {
         err = error;
     }
     return (res && res instanceof Promise
-        ? new Promise(resolve => res.then(finallyRes => resolve([finallyRes, err])).catch(error => resolve([undefined, error])))
+        ? new Promise(resolve => res
+            .then(finallyRes => resolve([finallyRes, err]))
+            .catch(error => resolve([undefined, error])))
         : [res, err]);
 };

@@ -5,12 +5,12 @@ export default (root, recursionDef, callback) => {
     let dep = 0;
     top: do {
         for (const stack of stacks) {
-            const res = callback === null || callback === void 0 ? void 0 : callback(stack, dep);
+            const res = callback?.(stack, dep);
             if (res === false)
                 break top;
             items.push(stack);
             const children = recursionDef(stack);
-            if (children === null || children === void 0 ? void 0 : children.length)
+            if (children?.length)
                 nextDepStack.push(...children);
         }
         stacks = nextDepStack;
