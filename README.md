@@ -37,6 +37,12 @@ const [strArr, numArr] = separate(arr, (item): item is string => typeof item ===
 console.log(strArr, numArr) // -> ['str0', 'str1'] [0, 1, 2]
 ```
 
+conversion
+
+```js
+conversion(3600, [60, 60, 24, 365])
+```
+
 eachAsync
 
 ```js
@@ -111,6 +117,15 @@ if (instanceOr(node, [HTMLInputElement, HTMLTextAreaElement, HTMLSelectElement])
 }
 ```
 
+branch
+
+```js
+const res = branch([
+  [false, () => 'False'],
+  [true, () => 'True']
+]) // -> 'True'
+```
+
 ternaryExt
 
 ```js
@@ -177,6 +192,19 @@ lastIdxRange('GitHub', /[A-Z][a-z]+/) // [3, 6]
 
 ### Number
 
+zeroPad
+
+```js
+zeroPad(7, 3) // -> '007'
+```
+
+conversion
+
+```js
+conversion(400000, [60, 60, 24, 365]) // -> [ 40, 6, 15, 4 ]
+// 400,000sec = 4days 15hour 6min 40sec
+```
+
 between
 
 ```js
@@ -199,4 +227,10 @@ withFlag
 
 ```js
 withFlag(/regepx/g, 'igu') // -> /regexp/gui
+```
+
+regAs
+
+```js
+regAs('.?+*[^]', 'igu') // -> /\.\?\+\*\[\^\]/gui
 ```

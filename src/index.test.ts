@@ -1,5 +1,22 @@
 import { JSDOM } from 'jsdom'
-import { branch, condProps, getOnCorrectness, goErr, indexRange, instanceAnd, lastIndexRange, mergePlainObject, move, separate } from './'
+import { describe, test } from '@jest/globals'
+import {
+  branch,
+  condProps,
+  conversion,
+  ternaryExt,
+  goErr,
+  idxRange,
+  instanceAnd,
+  lastIdxRange,
+  mergePlainObj,
+  move,
+  separate
+} from '../dist/index'
+
+describe('conversion', () => {
+  console.log(conversion(400000, [60, 60, 24, 365]))
+})
 
 describe('goErr', () => {
   const a = goErr(() => 'a')
@@ -10,41 +27,41 @@ describe('goErr', () => {
   })
 })
 
-describe('indexRange', () => {
+describe('idxRange', () => {
   test('文字列', () => {
-    expect(indexRange('adieus', 'die')).toEqual([1, 4])
-    expect(indexRange('_-_-', 'a')).toEqual(void 0)
+    expect(idxRange('adieus', 'die')).toEqual([1, 4])
+    expect(idxRange('_-_-', 'a')).toEqual(void 0)
   })
   test('正規表現', () => {
-    expect(indexRange('minecraft', /.{2}cra/)).toEqual([2, 7])
-    expect(indexRange('minecraft', /\d{2}/)).toEqual(void 0)
+    expect(idxRange('minecraft', /.{2}cra/)).toEqual([2, 7])
+    expect(idxRange('minecraft', /\d{2}/)).toEqual(void 0)
   })
 })
 
-describe('lastIndexRange', () => {
+describe('lastIdxRange', () => {
   test('正規表現', () => {
-    expect(lastIndexRange('GitHub', /[A-Z][a-z]+/)).toEqual([3, 6])
+    expect(lastIdxRange('GitHub', /[A-Z][a-z]+/)).toEqual([3, 6])
   })
 })
 
-describe('getOnCorrectness', () => {
-  const res = getOnCorrectness(false, {
+describe('ternaryExt', () => {
+  const res = ternaryExt(false, {
     true(cond) {
       return 'google' as const
     },
     false() {
       return 'youtube' as const
-    },
+    }
   })
 })
 
 describe('instanceAnd', () => {
   const win = new JSDOM().window
   const a: any = 10
-  if (instanceAnd(a, [win.HTMLDivElement, win.HTMLFontElement])) {
+  if (instanceAnd(a, [win.HTMLFontElement, win.HTMLElement])) {
     a
-  } else if (a instanceof win.HTMLInputElement || a instanceof win.HTMLMarqueeElement) {
-    a
+  } else if (a instanceof win.HTMLDivElement && a instanceof win.HTMLTextAreaElement) {
+    a.value
   }
 })
 
@@ -52,9 +69,9 @@ describe('condProps', () => {
   let obj = {
     ...condProps({
       a: [false, 0],
-      b: [true, 1],
+      b: [true, 1]
     }),
-    c: 2,
+    c: 2
   }
   it('プロパティの有無がboolean値に対応している', () => {
     expect(obj.hasOwnProperty('a')).toBeFalsy()
@@ -66,7 +83,7 @@ describe('branch', () => {
   const data = [
     [false, () => (console.log('string'), 'string')],
     [true, () => (console.log('RegExp'), /regexp/)],
-    [false, () => false],
+    [false, () => false]
   ] as const
 
   it('結果がtrueの条件分岐のreturnになる', () => {
@@ -74,36 +91,36 @@ describe('branch', () => {
   })
 })
 
-describe('mergePlainObject', () => {
+describe('mergePlainObj', () => {
   const base: TestObj = {
     a: 'string',
     b: /regexp/,
     c: {
       c0: 0,
-      c1: 1,
-    },
+      c1: 1
+    }
   }
   const mergeA = {
     c: {
-      c0: 2,
-    },
+      c0: 2
+    }
   }
   const mergeB = {
     c: {
       c0: undefined,
       c1: {
-        c10: 'c10',
-      },
-    },
+        c10: 'c10'
+      }
+    }
   }
   it('引数が1つの場合、そのままのオブジェクトが返される', () => {
-    expect(mergePlainObject(base).c.c0).toBe(0)
+    expect(mergePlainObj(base).c.c0).toBe(0)
   })
   it('1段階マージ', () => {
-    expect(mergePlainObject(base, mergeA).c.c0).toBe(2)
+    expect(mergePlainObj(base, mergeA).c.c0).toBe(2)
   })
   it('2段階マージ', () => {
-    const obj = mergePlainObject<TestObj>(base, mergeA, mergeB).c.c1
+    const obj = mergePlainObj<TestObj>(base, mergeA, mergeB).c.c1
     if (typeof obj === 'object') expect(obj.c10).toBe('c10')
   })
 })
