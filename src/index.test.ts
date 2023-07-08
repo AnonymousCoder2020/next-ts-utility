@@ -1,17 +1,17 @@
-import { JSDOM } from 'jsdom'
 import { describe, test } from '@jest/globals'
+import { JSDOM } from 'jsdom'
 import {
   branch,
   condProps,
   conversion,
-  ternaryExt,
   goErr,
   idxRange,
   instanceAnd,
   lastIdxRange,
   mergePlainObj,
   move,
-  separate
+  separate,
+  ternaryExt
 } from '../dist/index'
 
 describe('conversion', () => {
