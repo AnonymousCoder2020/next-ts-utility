@@ -4,6 +4,7 @@ import {
   branch,
   condProps,
   conversion,
+  cutStr,
   goErr,
   idxRange,
   instanceAnd,
@@ -140,13 +141,23 @@ type TestObj = {
 
 describe('move', () => {
   let a = [0, 1, 2, 3, 4]
-
   move(a, 1, 3)
-
-  console.log(a) // -> [0, 2, 3, 1, 4]
+  it('main', () => {
+    expect(a).toStrictEqual([0, 2, 3, 1, 4])
+  })
 })
 
 describe('separate', () => {
-  const a = [0, 1, 2, 3, 4, 5, 6, 7, '', '']
+  const a = ['a', 0, 1, 2, 'b', 3, 4, 5, 6, 7, 'c', 'd']
   const [b, c] = separate(a, (a): a is string => typeof a == 'string')
+  it('文字列と数値を分離', () => {
+    expect(b).toStrictEqual(['a', 'b', 'c', 'd'])
+    expect(c).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7])
+  })
+})
+
+describe('cutStr', () => {
+  it('main', () => {
+    expect(cutStr('VisualStudioCode', [6, 12])).toStrictEqual(['Visual', 'Studio', 'Code'])
+  })
 })

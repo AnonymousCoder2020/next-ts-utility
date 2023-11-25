@@ -29,12 +29,12 @@ separate
 ```js
 let arr = [0, 1, 2, 'str0', 'str1']
 
-const [strArr, numArr] = separate(arr, (item): item is string => typeof item === 'string')
+const [strs, nums] = separate(arr, (v): v is string => typeof v === 'string')
 
-// strArr: string[]
-// numArr: number[]
+// strs: string[]
+// nums: number[]
 
-console.log(strArr, numArr) // -> ['str0', 'str1'] [0, 1, 2]
+console.log(strs, nums) // -> ['str0', 'str1'] [0, 1, 2]
 ```
 
 eachAsync
@@ -73,24 +73,23 @@ eachMulti([a, b] as const, ([valueA, valueB], i) => {
 findResult
 
 ```js
-let regs = [/aa(.+)/, /cc(.+)/, /(.+)ee/]
+let regs = [/(.+)aa/, /(.+)bb/, /(.+)ee/]
 let text = 'coffee'
 
-let res = findResult(regs, reg => text.match(reg))
-// res: RegExpMatchArray
+let res: RegExpMatchArray = findResult(regs, reg => text.match(reg))
 
-console.log(res?.[1]) // -> 'ffee'
+console.log(res?.[1]) // -> 'coff'
 ```
 
 divArr
 
 ```js
-divArr([0, 1, '2', 3, 4, 5, /6/, 7], 3)
+divArr([0, 1, 2, 3, 4, 5, 6, 7], 3)
 /* ->
 [
-  [0, 1, '2'],
+  [0, 1, 2],
   [3, 4, 5],
-  [/6/, 7]
+  [6, 7]
 ]
 */
 ```
@@ -120,33 +119,6 @@ const res = branch([
 ]) // -> 'True'
 ```
 
-ternaryExt
-
-```js
-// Pure Typescript
-const res = {
-  true() {
-    // Complex processing...
-    return 1
-  },
-  false() {
-    // ...
-    return 0
-  }
-}[condition.toString() as 'true' | 'false']()
-// ↓ ↓ ↓
-const res = ternaryExt(condition, {
-  true() {
-    // ...
-    return 1
-  },
-  false() {
-    // ...
-    return 0
-  }
-})
-```
-
 ### Object
 
 condProps
@@ -170,11 +142,16 @@ let obj = {
 
 ### String
 
+curStr
+
+```js
+cutStr('VisualStudioCode', [6, 12]) // ['Visual', 'Studio', 'Code']
+```
+
 idxRange
 
 ```js
 idxRange('adieus', 'die') // [1, 4]
-
 idxRange('GitHub', /[A-Z][a-z]+/) // [0, 3]
 ```
 
@@ -212,19 +189,33 @@ between(3, 8, -1) // [7, 6, 5, 4]
 divCount
 
 ```js
-divCount([0, 1, /2/, 3, 4, '5', 6], 3) // -> [3, 3, 1]
+divCount([0, 1, 2, 3, 4, 5, 6], 3) // [3, 3, 1]
 ```
 
 ### RegExp
 
+absorbAsReg
+
+```js
+absorbAsReg('[match str]', 'g') //  /\[match str\]/g
+absorbAsReg(/(match str)/, 'i') //  /(match str)/i
+```
+
 withFlag
 
 ```js
-withFlag(/regepx/g, 'igu') // -> /regexp/gui
+withFlag(/regepx/g, 'igu') //  /regexp/gui
 ```
 
 regAs
 
 ```js
-regAs('.?+*[^]', 'igu') // -> /\.\?\+\*\[\^\]/gui
+regAs('.?+*[^]', 'igu') //  /\.\?\+\*\[\^\]/gui
+```
+
+isMtWithIdx
+
+```js
+const mts = 'JavaScript JScript'.matchAll(/Script/g)
+const ls: number[] = mts.filter(isMtWithIdx).map(mt => mt.index)
 ```
