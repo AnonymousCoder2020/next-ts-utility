@@ -5,11 +5,11 @@ type ResTypeExtractPromise<T extends AnyFunc> = T extends (...args: unknown[]) =
   : T extends (...args: unknown[]) => infer R
   ? R
   : never
-type SwitchPromise<T, S extends true | false> = S extends true ? Promise<T> : T
+type SwitchPromise<T, S extends boolean> = S extends true ? Promise<T> : T
 type GoErrRes<R> = [R, undefined] | [undefined, any]
 type GoErrResType<F extends AnyFunc> = SwitchPromise<GoErrRes<ResTypeExtractPromise<F>>, IsAsyncFunc<F>>
 
-export default <R extends OrPromise<any>>(callback: () => OrPromise<R>) => {
+export default <R extends OrPromise<any>>(callback: () => R) => {
   let err: any, res: unknown
   try {
     res = callback()
