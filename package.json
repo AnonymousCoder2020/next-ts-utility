@@ -1,6 +1,6 @@
 {
   "name": "next-ts-utility",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -29,6 +29,7 @@
   "dependencies": {
     "dayjs": "^1.11.7",
     "lodash-es": "^4.17.21",
+    "next-type-utility": "https://github.com/AnonymousCoder2020/next-type-utility",
     "randexp": "^0.5.3"
   },
   "devDependencies": {
@@ -51,7 +52,6 @@
     "jest-environment-node": "^26.6.2",
     "jest-svg-transformer": "^1.0.0",
     "jsdom": "^21.1.0",
-    "next-type-utility": "https://github.com/AnonymousCoder2020/next-type-utility",
     "node-forge": ">=0.10.0",
     "ts-essentials": "^9.3.0",
     "ts-jest": "^29.0.5",
