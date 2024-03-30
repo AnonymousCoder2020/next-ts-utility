@@ -5,7 +5,7 @@ interface EachRecurOpt<I> {
 
 export default <I>(root: I, leadToSub: (arg: I) => I[] | undefined, { callback, includeRoot }: EachRecurOpt<I> = {}) => {
   const items: I[] = []
-  let stacks: I[] = includeRoot === false ? [root] : []
+  let stacks: I[] = [root]
   let nextDepStack: I[] = []
   let dep = 0
   top: do {
@@ -20,5 +20,5 @@ export default <I>(root: I, leadToSub: (arg: I) => I[] | undefined, { callback, 
     nextDepStack = []
     dep++
   } while (stacks.length)
-  return items
+  return includeRoot === false ? items : items.filter(item => item !== root)
 }
