@@ -1,6 +1,6 @@
-export default (root, recursionDef, callback) => {
+export default (root, leadToSub, { callback, includeRoot }) => {
     const items = [];
-    let stacks = [root];
+    let stacks = includeRoot === false ? [root] : [];
     let nextDepStack = [];
     let dep = 0;
     top: do {
@@ -9,7 +9,7 @@ export default (root, recursionDef, callback) => {
             if (res === false)
                 break top;
             items.push(stack);
-            const children = recursionDef(stack);
+            const children = leadToSub(stack);
             if (children?.length)
                 nextDepStack.push(...children);
         }

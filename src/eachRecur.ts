@@ -1,6 +1,11 @@
-export default <I>(root: I, recursionDef: (arg: I) => I[] | undefined, callback?: (item: I, depth: number) => void | boolean) => {
+interface EachRecurOpt<I> {
+  callback?: (item: I, depth: number) => void | boolean
+  includeRoot?: false
+}
+
+export default <I>(root: I, leadToSub: (arg: I) => I[] | undefined, { callback, includeRoot }: EachRecurOpt<I>) => {
   const items: I[] = []
-  let stacks: I[] = [root]
+  let stacks: I[] = includeRoot === false ? [root] : []
   let nextDepStack: I[] = []
   let dep = 0
   top: do {
@@ -8,7 +13,7 @@ export default <I>(root: I, recursionDef: (arg: I) => I[] | undefined, callback?
       const res = callback?.(stack, dep)
       if (res === false) break top
       items.push(stack)
-      const children = recursionDef(stack)
+      const children = leadToSub(stack)
       if (children?.length) nextDepStack.push(...children)
     }
     stacks = nextDepStack
