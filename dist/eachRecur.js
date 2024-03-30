@@ -1,4 +1,4 @@
-export default (root, leadToSub, { callback, includeRoot }) => {
+export default (root, leadToSub, { callback, includeRoot } = {}) => {
     const items = [];
     let stacks = includeRoot === false ? [root] : [];
     let nextDepStack = [];

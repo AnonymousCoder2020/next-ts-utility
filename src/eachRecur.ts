@@ -3,7 +3,7 @@ interface EachRecurOpt<I> {
   includeRoot?: false
 }
 
-export default <I>(root: I, leadToSub: (arg: I) => I[] | undefined, { callback, includeRoot }: EachRecurOpt<I>) => {
+export default <I>(root: I, leadToSub: (arg: I) => I[] | undefined, { callback, includeRoot }: EachRecurOpt<I> = {}) => {
   const items: I[] = []
   let stacks: I[] = includeRoot === false ? [root] : []
   let nextDepStack: I[] = []
