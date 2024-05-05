@@ -5,8 +5,7 @@ export default (root, leadToSub, { callback, includeRoot } = {}) => {
     let dep = 0;
     top: do {
         for (const stack of stacks) {
-            const res = callback?.(stack, dep);
-            if (res === false)
+            if (callback?.(stack, dep) === false)
                 break top;
             items.push(stack);
             const children = leadToSub(stack);
@@ -17,5 +16,5 @@ export default (root, leadToSub, { callback, includeRoot } = {}) => {
         nextDepStack = [];
         dep++;
     } while (stacks.length);
-    return includeRoot === false ? items : items.filter(item => item !== root);
+    return includeRoot === false ? items.filter(item => item !== root) : items;
 };
